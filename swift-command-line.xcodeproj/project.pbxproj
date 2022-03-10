@@ -10,6 +10,10 @@
 		DF2E4F3727D8CFD400B01EA9 /* getInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E4F3627D8CFD400B01EA9 /* getInput.swift */; };
 		DF2E4F3927D8E11E00B01EA9 /* clearConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E4F3827D8E11E00B01EA9 /* clearConsole.swift */; };
 		DF8E2F5C27D0DDEC00900FAA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E2F5B27D0DDEC00900FAA /* main.swift */; };
+		DFB0CCD727DA40F1009C37C3 /* JSONMocks.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFB0CCD327DA38B7009C37C3 /* JSONMocks.bundle */; };
+		DFB0CCDA27DA7A62009C37C3 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB0CCD927DA7A62009C37C3 /* JSON.swift */; };
+		DFB0CCDD27DA7B4A009C37C3 /* activityManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB0CCDC27DA7B4A009C37C3 /* activityManagement.swift */; };
+		DFB0CCDF27DA8C81009C37C3 /* Gabi-JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB0CCDE27DA8C81009C37C3 /* Gabi-JSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,6 +23,7 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
+				DFB0CCD727DA40F1009C37C3 /* JSONMocks.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -29,10 +34,21 @@
 		DF2E4F3827D8E11E00B01EA9 /* clearConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clearConsole.swift; sourceTree = "<group>"; };
 		DF8E2F5827D0DDEC00900FAA /* swift-command-line */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-command-line"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8E2F5B27D0DDEC00900FAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DFB0CCD327DA38B7009C37C3 /* JSONMocks.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONMocks.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFB0CCD927DA7A62009C37C3 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		DFB0CCDC27DA7B4A009C37C3 /* activityManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityManagement.swift; sourceTree = "<group>"; };
+		DFB0CCDE27DA8C81009C37C3 /* Gabi-JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gabi-JSON.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DF8E2F5527D0DDEC00900FAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFB0CCD027DA38B7009C37C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +63,8 @@
 			children = (
 				DF2E4F3627D8CFD400B01EA9 /* getInput.swift */,
 				DF2E4F3827D8E11E00B01EA9 /* clearConsole.swift */,
+				DFB0CCD927DA7A62009C37C3 /* JSON.swift */,
+				DFB0CCDE27DA8C81009C37C3 /* Gabi-JSON.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -63,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				DF8E2F5827D0DDEC00900FAA /* swift-command-line */,
+				DFB0CCD327DA38B7009C37C3 /* JSONMocks.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,9 +90,18 @@
 			isa = PBXGroup;
 			children = (
 				DF8E2F5B27D0DDEC00900FAA /* main.swift */,
+				DFB0CCDB27DA7B1C009C37C3 /* src */,
 				DF2E4F3527D8CFAB00B01EA9 /* components */,
 			);
 			path = "swift-command-line";
+			sourceTree = "<group>";
+		};
+		DFB0CCDB27DA7B1C009C37C3 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				DFB0CCDC27DA7B4A009C37C3 /* activityManagement.swift */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +124,23 @@
 			productReference = DF8E2F5827D0DDEC00900FAA /* swift-command-line */;
 			productType = "com.apple.product-type.tool";
 		};
+		DFB0CCD227DA38B7009C37C3 /* JSONMocks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFB0CCD427DA38B7009C37C3 /* Build configuration list for PBXNativeTarget "JSONMocks" */;
+			buildPhases = (
+				DFB0CCCF27DA38B7009C37C3 /* Sources */,
+				DFB0CCD027DA38B7009C37C3 /* Frameworks */,
+				DFB0CCD127DA38B7009C37C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JSONMocks;
+			productName = JSONMocks;
+			productReference = DFB0CCD327DA38B7009C37C3 /* JSONMocks.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -107,6 +152,9 @@
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					DF8E2F5727D0DDEC00900FAA = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					DFB0CCD227DA38B7009C37C3 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -125,18 +173,39 @@
 			projectRoot = "";
 			targets = (
 				DF8E2F5727D0DDEC00900FAA /* swift-command-line */,
+				DFB0CCD227DA38B7009C37C3 /* JSONMocks */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DFB0CCD127DA38B7009C37C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DF8E2F5427D0DDEC00900FAA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB0CCDF27DA8C81009C37C3 /* Gabi-JSON.swift in Sources */,
 				DF2E4F3927D8E11E00B01EA9 /* clearConsole.swift in Sources */,
 				DF8E2F5C27D0DDEC00900FAA /* main.swift in Sources */,
 				DF2E4F3727D8CFD400B01EA9 /* getInput.swift in Sources */,
+				DFB0CCDD27DA7B4A009C37C3 /* activityManagement.swift in Sources */,
+				DFB0CCDA27DA7A62009C37C3 /* JSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFB0CCCF27DA38B7009C37C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +345,44 @@
 			};
 			name = Release;
 		};
+		DFB0CCD527DA38B7009C37C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yago.JSONMocks;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		DFB0CCD627DA38B7009C37C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yago.JSONMocks;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -293,6 +400,15 @@
 			buildConfigurations = (
 				DF8E2F6027D0DDEC00900FAA /* Debug */,
 				DF8E2F6127D0DDEC00900FAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFB0CCD427DA38B7009C37C3 /* Build configuration list for PBXNativeTarget "JSONMocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFB0CCD527DA38B7009C37C3 /* Debug */,
+				DFB0CCD627DA38B7009C37C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
