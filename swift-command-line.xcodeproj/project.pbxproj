@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF2E4F3727D8CFD400B01EA9 /* getInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E4F3627D8CFD400B01EA9 /* getInput.swift */; };
+		DF2E4F3927D8E11E00B01EA9 /* clearConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E4F3827D8E11E00B01EA9 /* clearConsole.swift */; };
 		DF8E2F5C27D0DDEC00900FAA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E2F5B27D0DDEC00900FAA /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DF2E4F3627D8CFD400B01EA9 /* getInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getInput.swift; sourceTree = "<group>"; };
+		DF2E4F3827D8E11E00B01EA9 /* clearConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clearConsole.swift; sourceTree = "<group>"; };
 		DF8E2F5827D0DDEC00900FAA /* swift-command-line */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-command-line"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8E2F5B27D0DDEC00900FAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +42,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF2E4F3527D8CFAB00B01EA9 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				DF2E4F3627D8CFD400B01EA9 /* getInput.swift */,
+				DF2E4F3827D8E11E00B01EA9 /* clearConsole.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
 		DF8E2F4F27D0DDEC00900FAA = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				DF8E2F5B27D0DDEC00900FAA /* main.swift */,
+				DF2E4F3527D8CFAB00B01EA9 /* components */,
 			);
 			path = "swift-command-line";
 			sourceTree = "<group>";
@@ -120,7 +134,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2E4F3927D8E11E00B01EA9 /* clearConsole.swift in Sources */,
 				DF8E2F5C27D0DDEC00900FAA /* main.swift in Sources */,
+				DF2E4F3727D8CFD400B01EA9 /* getInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
