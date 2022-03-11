@@ -35,11 +35,28 @@ class Activity: Codable {
         self.deadline = deadline
     }
     
+    init(
+        title: String,
+        category: String,
+        deadline: String,
+        id: Int,
+        createdAt: String,
+        done: Bool
+    ) {
+        self.title = title
+        self.category = category
+        self.deadline = deadline
+        self.id = id
+        self.createdAt = createdAt
+        self.done = done
+    }
+    
     init(_ dict: [String: Any]) {
         //mapear cada chave:valor para os atributos
         self.title = dict["title"] as! String
         self.category = dict["category"] as! String
         self.deadline = dict["deadline"] as! String
+        self.id = dict["id"] as! Int
     }
 }
 
@@ -63,12 +80,22 @@ func useActivity(
     Activities.append(newActivity)
 }
 
-func useActivityWithCategory(
+func useActivityForJSON(
     title: String,
     category: String,
-    deadline: String
+    deadline: String,
+    id: Int,
+    createdAt: String,
+    done: Bool
 ) {
-    let newActivity = Activity(title: title, category: category, deadline: deadline)
+    let newActivity = Activity(
+        title: title,
+        category: category,
+        deadline: deadline,
+        id: id,
+        createdAt: createdAt,
+        done: done
+    )
     Activities.append(newActivity)
 }
 
@@ -103,7 +130,7 @@ func listenActivity() -> Activity {
         evaluations: (importance: importance, urgency: urgency),
         deadline: deadline
     )
-    return Activities[0]
+    return Activities[Activities.endIndex-1]
 }
 
 //let data = try? JSONEncoder().encode(Activities)

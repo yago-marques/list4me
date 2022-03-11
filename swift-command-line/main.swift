@@ -7,6 +7,10 @@
 
 import Foundation
 
-let db = useJSON()
+var db = useJSON()
 
-getActivity(index: 0)
+//pushListenActivity()
+
+for i in 0..<db.count {
+    getActivity(index: i)
+}

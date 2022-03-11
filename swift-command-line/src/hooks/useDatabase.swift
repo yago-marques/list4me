@@ -7,20 +7,18 @@
 
 import Foundation
 
-func startJSON(json: [Activity]){
-    for activity in json {
-        useActivityWithCategory(
-            title: activity.title,
-            category: activity.category,
-            deadline: activity.deadline
-        )
+func pushListenActivity() {
+    _ = listenActivity()
+    let arr = Activities
+    let activity = try! JSONEncoder().encode(arr)
+    let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let directoryURL = documentsDirectory.appendingPathComponent("lazy-todo")
+    let newFilePath = directoryURL.appendingPathComponent("data.json")
+    do {
+        try activity.write(to: newFilePath)
+        return
+    } catch {
+        return
     }
-}
-
-func useDatabase() {
-    let firstActivity = listenActivity()
-    let arr = [firstActivity]
-    let jsonData = try! JSONEncoder().encode(arr)
-    createData(data: jsonData)
 }
 

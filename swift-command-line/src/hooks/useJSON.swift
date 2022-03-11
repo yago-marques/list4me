@@ -32,7 +32,21 @@ func createData(data: Data) -> Void {
         try data.write(to: newFilePath)
         return
     } catch {
+        print("here")
         return
+    }
+}
+
+func startJSON(json: [Activity]){
+    for activity in json {
+        useActivityForJSON(
+            title: activity.title,
+            category: activity.category,
+            deadline: activity.deadline,
+            id: activity.id,
+            createdAt: activity.createdAt,
+            done: activity.done
+        )
     }
 }
 
