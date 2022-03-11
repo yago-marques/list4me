@@ -1,4 +1,4 @@
-# Swift challenger
+# Swift challenge
 ## Big Idea
 Swift
 ## Essential Question
