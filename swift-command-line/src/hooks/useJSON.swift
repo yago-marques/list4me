@@ -9,14 +9,13 @@ import Foundation
 
 func getPathForDatabase() -> URL {
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    print(documentsDirectory)
-    let directoryURL = documentsDirectory.appendingPathComponent("MinhaNovaPasta")
+    let directoryURL = documentsDirectory.appendingPathComponent("lazy-todo")
     return directoryURL.appendingPathComponent("data.json")
 }
 
 func createDataDirectory() -> Void {
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let directoryURL = documentsDirectory.appendingPathComponent("MinhaNovaPasta")
+    let directoryURL = documentsDirectory.appendingPathComponent("lazy-todo")
     do {
         try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: false, attributes: nil)
         return
@@ -25,43 +24,38 @@ func createDataDirectory() -> Void {
     }
 }
 
-func createData(data: Data) -> Bool {
+func createData(data: Data) -> Void {
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let directoryURL = documentsDirectory.appendingPathComponent("MinhaNovaPasta")
+    let directoryURL = documentsDirectory.appendingPathComponent("lazy-todo")
     let newFilePath = directoryURL.appendingPathComponent("data.json")
     do {
         try data.write(to: newFilePath)
-        return true
+        return
     } catch {
-        return false
+        return
     }
 }
 
-func useJson() -> [String: String] {
+func useJSON() -> [Activity] {
+    
     var myJSONData: Data
 
     if FileManager.default.fileExists(atPath: getPathForDatabase().path) {
         myJSONData = try! Data(contentsOf: getPathForDatabase())
     } else {
         createDataDirectory()
-        var dict = [String: String]()
-        dict["empty"] = "empty"
-        let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: .fragmentsAllowed)
+        let firstActivity = listenActivity()
+        let arr = [firstActivity]
+        let jsonData = try! JSONEncoder().encode(arr)
         createData(data: jsonData)
         myJSONData = try! Data(contentsOf: getPathForDatabase())
     }
 
-
-    let jsonObject = try! JSONSerialization.jsonObject(with: myJSONData, options: .fragmentsAllowed)
-    let jsonData = jsonObject as! [String: String]
-
-    return jsonData
+    let jsonObject: [[String: Any]] = try! JSONSerialization.jsonObject(with: myJSONData, options: []) as! [[String : Any]]
+    
+    let activities: [Activity] = jsonObject.map { Activity($0) }
+    startJSON(json: activities)
+    
+    return activities
+    
 }
-
-//for obj in  jsonData.values {
-//    let decoder = JSONDecoder()
-//    let apod = try? decoder.decode(APOD.self, from: JSONSerialization.data(withJSONObject: obj))
-//
-//    print(apod!.random, ",", apod!.other)
-//}
-

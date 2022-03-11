@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF14EA8E27DBC10200912142 /* useDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14EA8D27DBC10200912142 /* useDatabase.swift */; };
 		DF2E4F3727D8CFD400B01EA9 /* getInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E4F3627D8CFD400B01EA9 /* getInput.swift */; };
 		DF2E4F3927D8E11E00B01EA9 /* clearConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E4F3827D8E11E00B01EA9 /* clearConsole.swift */; };
 		DF8E2F5C27D0DDEC00900FAA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E2F5B27D0DDEC00900FAA /* main.swift */; };
 		DFB0CCD727DA40F1009C37C3 /* JSONMocks.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFB0CCD327DA38B7009C37C3 /* JSONMocks.bundle */; };
-		DFB0CCDA27DA7A62009C37C3 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB0CCD927DA7A62009C37C3 /* JSON.swift */; };
-		DFB0CCDD27DA7B4A009C37C3 /* activityManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB0CCDC27DA7B4A009C37C3 /* activityManagement.swift */; };
+		DFB0CCDA27DA7A62009C37C3 /* useJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB0CCD927DA7A62009C37C3 /* useJSON.swift */; };
+		DFB0CCDD27DA7B4A009C37C3 /* useActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB0CCDC27DA7B4A009C37C3 /* useActivity.swift */; };
 		DFB0CCDF27DA8C81009C37C3 /* Gabi-JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB0CCDE27DA8C81009C37C3 /* Gabi-JSON.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,13 +31,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DF14EA8D27DBC10200912142 /* useDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = useDatabase.swift; sourceTree = "<group>"; };
 		DF2E4F3627D8CFD400B01EA9 /* getInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getInput.swift; sourceTree = "<group>"; };
 		DF2E4F3827D8E11E00B01EA9 /* clearConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clearConsole.swift; sourceTree = "<group>"; };
 		DF8E2F5827D0DDEC00900FAA /* swift-command-line */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-command-line"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8E2F5B27D0DDEC00900FAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DFB0CCD327DA38B7009C37C3 /* JSONMocks.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONMocks.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFB0CCD927DA7A62009C37C3 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		DFB0CCDC27DA7B4A009C37C3 /* activityManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityManagement.swift; sourceTree = "<group>"; };
+		DFB0CCD927DA7A62009C37C3 /* useJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = useJSON.swift; sourceTree = "<group>"; };
+		DFB0CCDC27DA7B4A009C37C3 /* useActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = useActivity.swift; sourceTree = "<group>"; };
 		DFB0CCDE27DA8C81009C37C3 /* Gabi-JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gabi-JSON.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,12 +60,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF14EA8C27DBB5A700912142 /* hooks */ = {
+			isa = PBXGroup;
+			children = (
+				DF14EA8D27DBC10200912142 /* useDatabase.swift */,
+				DFB0CCD927DA7A62009C37C3 /* useJSON.swift */,
+				DFB0CCDC27DA7B4A009C37C3 /* useActivity.swift */,
+			);
+			path = hooks;
+			sourceTree = "<group>";
+		};
 		DF2E4F3527D8CFAB00B01EA9 /* components */ = {
 			isa = PBXGroup;
 			children = (
 				DF2E4F3627D8CFD400B01EA9 /* getInput.swift */,
 				DF2E4F3827D8E11E00B01EA9 /* clearConsole.swift */,
-				DFB0CCD927DA7A62009C37C3 /* JSON.swift */,
 				DFB0CCDE27DA8C81009C37C3 /* Gabi-JSON.swift */,
 			);
 			path = components;
@@ -91,7 +102,6 @@
 			children = (
 				DF8E2F5B27D0DDEC00900FAA /* main.swift */,
 				DFB0CCDB27DA7B1C009C37C3 /* src */,
-				DF2E4F3527D8CFAB00B01EA9 /* components */,
 			);
 			path = "swift-command-line";
 			sourceTree = "<group>";
@@ -99,7 +109,8 @@
 		DFB0CCDB27DA7B1C009C37C3 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				DFB0CCDC27DA7B4A009C37C3 /* activityManagement.swift */,
+				DF14EA8C27DBB5A700912142 /* hooks */,
+				DF2E4F3527D8CFAB00B01EA9 /* components */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -197,8 +208,9 @@
 				DF2E4F3927D8E11E00B01EA9 /* clearConsole.swift in Sources */,
 				DF8E2F5C27D0DDEC00900FAA /* main.swift in Sources */,
 				DF2E4F3727D8CFD400B01EA9 /* getInput.swift in Sources */,
-				DFB0CCDD27DA7B4A009C37C3 /* activityManagement.swift in Sources */,
-				DFB0CCDA27DA7A62009C37C3 /* JSON.swift in Sources */,
+				DF14EA8E27DBC10200912142 /* useDatabase.swift in Sources */,
+				DFB0CCDD27DA7B4A009C37C3 /* useActivity.swift in Sources */,
+				DFB0CCDA27DA7A62009C37C3 /* useJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,4 +7,6 @@
 
 import Foundation
 
+let db = useJSON()
 
+getActivity(index: 0)

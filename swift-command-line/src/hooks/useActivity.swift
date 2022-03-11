@@ -24,6 +24,23 @@ class Activity: Codable {
     var deadline = String()
     var done = false
     var id = Int.random(in: 100000...999999)
+    
+    init(
+        title: String,
+        category: String,
+        deadline: String
+    ) {
+        self.title = title
+        self.category = category
+        self.deadline = deadline
+    }
+    
+    init(_ dict: [String: Any]) {
+        //mapear cada chave:valor para os atributos
+        self.title = dict["title"] as! String
+        self.category = dict["category"] as! String
+        self.deadline = dict["deadline"] as! String
+    }
 }
 
 func useCategory(_ evaluations: (importance: Int, urgency: Int)) -> String {
@@ -31,7 +48,7 @@ func useCategory(_ evaluations: (importance: Int, urgency: Int)) -> String {
         case let (i, u) where i > 5 && u > 5:
         return "⭐⭐⭐⭐⭐"
         case let (i, u) where i > 5 && u <= 5:
-        return "⭐⭐⭐"
+        return "⭐⭐⭐⭐"
         default:
         return "Error"
     }
@@ -42,10 +59,16 @@ func useActivity(
     evaluations: (importance: Int, urgency: Int),
     deadline: String
 ) {
-    let newActivity = Activity()
-    newActivity.deadline = deadline
-    newActivity.title = title
-    newActivity.category = useCategory(evaluations)
+    let newActivity = Activity(title: title, category: useCategory(evaluations), deadline: deadline)
+    Activities.append(newActivity)
+}
+
+func useActivityWithCategory(
+    title: String,
+    category: String,
+    deadline: String
+) {
+    let newActivity = Activity(title: title, category: category, deadline: deadline)
     Activities.append(newActivity)
 }
 
@@ -70,7 +93,19 @@ func getActivity(index: Int){
     print("")
 }
 
+func listenActivity() -> Activity {
+    let title = getString("Título atividade: ")
+    let deadline = getString("DeadLine: ")
+    let importance = getInt("Importancia: ")
+    let urgency = getInt("Urgência: ")
+    useActivity(
+        title: title,
+        evaluations: (importance: importance, urgency: urgency),
+        deadline: deadline
+    )
+    return Activities[0]
+}
 
-let data = try? JSONEncoder().encode(Activities)
+//let data = try? JSONEncoder().encode(Activities)
 //ler data do file manager
 //let activitiesData = try? JSONDecoder.decode([Activity].self, from: data)
