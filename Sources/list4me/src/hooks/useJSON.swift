@@ -9,13 +9,13 @@ import Foundation
 
 func getPathForDatabase() -> URL {
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let directoryURL = documentsDirectory.appendingPathComponent("lazy-todo")
+    let directoryURL = documentsDirectory.appendingPathComponent("List4Me")
     return directoryURL.appendingPathComponent("data.json")
 }
 
 func createDataDirectory() -> Void {
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let directoryURL = documentsDirectory.appendingPathComponent("lazy-todo")
+    let directoryURL = documentsDirectory.appendingPathComponent("List4Me")
     do {
         try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: false, attributes: nil)
         return
@@ -26,7 +26,7 @@ func createDataDirectory() -> Void {
 
 func createData(data: Data) -> Void {
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let directoryURL = documentsDirectory.appendingPathComponent("lazy-todo")
+    let directoryURL = documentsDirectory.appendingPathComponent("List4Me")
     let newFilePath = directoryURL.appendingPathComponent("data.json")
     do {
         try data.write(to: newFilePath)
@@ -40,12 +40,8 @@ func createData(data: Data) -> Void {
 func startJSON(json: [Activity]){
     for activity in json {
         useActivityForJSON(
-            title: activity.title,
-            category: activity.category,
-            deadline: activity.deadline,
-            id: activity.id,
-            createdAt: activity.createdAt,
-            done: activity.done
+            context: activity.context,
+            tasks: activity.tasks
         )
     }
 }
@@ -64,10 +60,9 @@ func useJSON() -> [Activity] {
         createData(data: jsonData)
         myJSONData = try! Data(contentsOf: getPathForDatabase())
     }
-
-    let jsonObject: [[String: Any]] = try! JSONSerialization.jsonObject(with: myJSONData, options: []) as! [[String : Any]]
     
-    let activities: [Activity] = jsonObject.map { Activity($0) }
+    let activities = try! JSONDecoder().decode([Activity].self, from: myJSONData)
+    
     startJSON(json: activities)
     
     return activities

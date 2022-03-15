@@ -9,8 +9,4 @@ import Foundation
 
 var db = useJSON()
 
-//pushListenActivity()
-
-for i in 0..<db.count {
-    getActivity(index: i)
-}
+//GET(context: "Academy", filter: "todoTasks")

@@ -47,3 +47,15 @@ func getBool(_ msg: String) -> Bool{
         default : return Bool()
     }
 }
+
+func getCurrentDate() -> String {
+    let date = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd.MM.yyyy"
+    let result = dateFormatter.string(from: date)
+    return result
+}
+
+func uuid() -> Int {
+    return Int.random(in: 100000...999999)
+}
