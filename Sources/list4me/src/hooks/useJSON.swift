@@ -52,6 +52,8 @@ func useJSON() -> [Activity] {
 
     if FileManager.default.fileExists(atPath: getPathForDatabase().path) {
         myJSONData = try! Data(contentsOf: getPathForDatabase())
+        let activities = try! JSONDecoder().decode([Activity].self, from: myJSONData)
+        startJSON(json: activities)
     } else {
         createDataDirectory()
         let firstActivity = listenActivity()
@@ -62,8 +64,6 @@ func useJSON() -> [Activity] {
     }
     
     let activities = try! JSONDecoder().decode([Activity].self, from: myJSONData)
-    
-    startJSON(json: activities)
     
     return activities
     

@@ -7,6 +7,32 @@
 
 import Foundation
 
+func postActivity() {
+    let (code, context) = verifyIfIsTaskOrActivity()
+    print(code)
+    
+    switch code {
+    case 1:
+        let newTask = listenTask()
+        useTask(
+            context: context,
+            newTask: newTask
+        )
+        POST(data: Activities)
+        
+    case 0:
+        let newTask = listenTask()
+        useActivityWithTask(
+            context: context,
+            task: newTask
+        )
+        POST(data: Activities)
+        
+    default: print("error")
+    }
+
+}
+
 func POST(data: [Activity]) {
     let activity = try! JSONEncoder().encode(Activities)
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

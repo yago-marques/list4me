@@ -27,7 +27,6 @@ func useTask(context: String, newTask: Task) {
     for i in 0..<Activities.count {
         if Activities[i].context == context {
             Activities[i].tasks.append(newTask)
-            POST(data: Activities)
         }
     }
 }

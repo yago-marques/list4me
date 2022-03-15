@@ -57,6 +57,18 @@ func useActivity(
     Activities.append(newActivity)
 }
 
+func useActivityWithTask(
+    context: String,
+    task: Task
+){
+    let newActivity = Activity(
+        context: context,
+        tasks: [task]
+    )
+    
+    Activities.append(newActivity)
+}
+
 func useActivityForJSON(
     context: String,
     tasks: [Task]
@@ -97,6 +109,17 @@ func listenActivity() -> Activity {
         deadline: deadline
     )
     return Activities[Activities.endIndex-1]
+}
+
+func verifyIfIsTaskOrActivity() -> (Int, String) {
+    let currentContext = getContext()
+    print(currentContext)
+    for activity in Activities {
+        if activity.context == currentContext {
+            return (1, currentContext)
+        }
+    }
+    return (0, currentContext)
 }
 
 //let data = try? JSONEncoder().encode(Activities)

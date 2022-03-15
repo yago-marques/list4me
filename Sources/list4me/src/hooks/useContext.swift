@@ -14,13 +14,14 @@ func getContext() -> String{
         print("(\(index)) - \(activity.context)")
         index += 1
     }
-    print("0 - Criar contexto")
+    
+    print("(0) - Criar contexto")
     let res = getInt("Escolha o contexto da atividade")
     if res == 0 {
         let newContext = createContext()
         return newContext
     } else {
-        let context = Activities[res].context
+        let context = Activities[res-1].context
         return context
     }
 }
