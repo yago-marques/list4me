@@ -16,14 +16,23 @@ func getContext() -> String{
     }
     
     print("(0) - Criar contexto")
-    let res = getInt("Escolha o contexto da atividade")
-    if res == 0 {
-        let newContext = createContext()
-        return newContext
-    } else {
-        let context = Activities[res-1].context
-        return context
-    }
+    
+    var positionIsValid = false
+    
+    repeat {
+        let res = getInt("Escolha o contexto da tarefa")
+        if res <= Activities.count {
+            positionIsValid = true
+            if res == 0 {
+                let newContext = createContext()
+                return newContext
+            } else {
+                let context = Activities[res-1].context
+                return context
+            }
+        }
+        
+    } while !positionIsValid
 }
 
 func getFirstContext() -> String {
@@ -34,4 +43,24 @@ func getFirstContext() -> String {
 func createContext() -> String {
     let newContext = getString("Digite o novo contexto: ")
     return newContext
+}
+
+func chooseContextWithdrawCreateOption() -> String{
+    print("Contextos existentes: ")
+    var index = 1
+    for activity in Activities {
+        print("(\(index)) - \(activity.context)")
+        index += 1
+    }
+    
+    var positionIsValid = false
+    
+    repeat {
+        let res = getInt("Escolha o contexto da tarefa")
+        if res != 0, res <= Activities.count {
+            positionIsValid = true
+            let context = Activities[res-1].context
+            return context
+        }
+    } while !positionIsValid
 }

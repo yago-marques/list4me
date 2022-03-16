@@ -51,3 +51,17 @@ func getTask(context: Int, task: Int){
     print("==CreatedAt-\(thisActivity.tasks[task].createdAt)")
     print("")
 }
+
+func chooseTaskConfig(context: String) -> (Int, [Int]){
+    var contextIndex = Int()
+    var tasksIndex: [Int] = []
+    for i in 0..<Activities.count {
+        if Activities[i].context == context {
+            contextIndex = i
+            for j in 0..<Activities[i].tasks.count {
+                tasksIndex.append(j)
+            }
+        }
+    }
+    return (contextIndex, tasksIndex)
+}

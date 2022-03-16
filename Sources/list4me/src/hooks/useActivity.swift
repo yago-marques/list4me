@@ -113,7 +113,6 @@ func listenActivity() -> Activity {
 
 func verifyIfIsTaskOrActivity() -> (Int, String) {
     let currentContext = getContext()
-    print(currentContext)
     for activity in Activities {
         if activity.context == currentContext {
             return (1, currentContext)

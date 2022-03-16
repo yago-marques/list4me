@@ -9,7 +9,6 @@ import Foundation
 
 func postActivity() {
     let (code, context) = verifyIfIsTaskOrActivity()
-    print(code)
     
     switch code {
     case 1:
@@ -31,6 +30,31 @@ func postActivity() {
     default: print("error")
     }
 
+}
+
+func deleteActivity(){
+    let context = chooseContextWithdrawCreateOption()
+    let (contextIndex, tasksIndexRange) = chooseTaskConfig(context: context)
+    print("")
+    print("Escolha a tarefa para ser removida: ")
+    for taskIndex in tasksIndexRange {
+        print("==TAREFA (\(taskIndex+1))==")
+        getTask(context: contextIndex, task: taskIndex)
+    }
+    var taskNumberIsValid = false
+    var taskNumber = Int()
+    
+    repeat{
+        taskNumber = getInt("Digite o número da tarefa")
+        for validTaskNumber in tasksIndexRange{
+            if taskNumber == validTaskNumber+1 {
+                taskNumberIsValid = true
+            }
+        }
+    } while !taskNumberIsValid
+    
+    Activities[contextIndex].tasks.remove(at: taskNumber-1)
+    POST(data: Activities)
 }
 
 func POST(data: [Activity]) {
