@@ -14,9 +14,13 @@ func main() {
     let option = useMenu()
     switch option {
     case 1:
-        postActivity()
+        postTask()
     case 2:
-        deleteActivity()
+        deleteTask()
+    case 3:
+        deleteContext()
+    case 4:
+        putTask()
     default: print("error")
     }
     

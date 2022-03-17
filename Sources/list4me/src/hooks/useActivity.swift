@@ -17,7 +17,7 @@ struct Task: Codable {
 }
 
 struct Activity: Codable {
-    let context: String
+    var context: String
     var tasks: [Task]
 }
 
@@ -119,6 +119,35 @@ func verifyIfIsTaskOrActivity() -> (Int, String) {
         }
     }
     return (0, currentContext)
+}
+
+func choosePropertyToUptade() -> Int{
+    let propertyMenu = """
+    (1) - Contexto
+    (2) - Tarefa
+    """
+    
+    print(propertyMenu)
+    var option = 0
+    repeat {
+        option = getInt("Escolha a propriedade para alterar")
+    } while option != 1 && option != 2
+    
+    return option
+}
+
+func choosePropertyToUpdateInTask() -> Int{
+    let propertyMenu = """
+    (1) - Category
+    (2) - Title
+    (3) - Deadline
+    """
+    print(propertyMenu)
+    var option = 0
+    repeat {
+        option = getInt("Digite a propriedade para ser alterada")
+    } while option != 1 && option != 2 && option != 3
+    return option
 }
 
 //let data = try? JSONEncoder().encode(Activities)

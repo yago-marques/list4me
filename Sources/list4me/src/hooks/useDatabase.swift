@@ -7,7 +7,7 @@
 
 import Foundation
 
-func postActivity() {
+func postTask() {
     let (code, context) = verifyIfIsTaskOrActivity()
     
     switch code {
@@ -32,8 +32,9 @@ func postActivity() {
 
 }
 
-func deleteActivity(){
+func deleteTask(){
     let context = chooseContextWithdrawCreateOption()
+    
     let (contextIndex, tasksIndexRange) = chooseTaskConfig(context: context)
     print("")
     print("Escolha a tarefa para ser removida: ")
@@ -54,7 +55,70 @@ func deleteActivity(){
     } while !taskNumberIsValid
     
     Activities[contextIndex].tasks.remove(at: taskNumber-1)
+    
+    if Activities[contextIndex].tasks.isEmpty {
+        deleteThisContext(context: context)
+    }
+        
     POST(data: Activities)
+}
+
+func deleteContext() {
+    let context = chooseContextWithdrawCreateOption()
+    var indexToRemove = Int()
+    for i in 0..<Activities.count {
+        if context == Activities[i].context {
+            indexToRemove = i
+        }
+    }
+    Activities.remove(at: indexToRemove)
+    POST(data: Activities)
+}
+
+func deleteThisContext(context: String) {
+    var indexToRemove = Int()
+    for i in 0..<Activities.count {
+        if context == Activities[i].context {
+            indexToRemove = i
+        }
+    }
+    Activities.remove(at: indexToRemove)
+    POST(data: Activities)
+}
+
+func putTask() {
+    let option = choosePropertyToUptade()
+    let context = chooseContextWithdrawCreateOption()
+    switch option {
+    case 1:
+        let newNameForContext = getString("Novo nome para o contexto: ")
+        var indexOfContext = Int()
+        for i in 0..<Activities.count {
+            if Activities[i].context == context {
+                indexOfContext = i
+            }
+        }
+        Activities[indexOfContext].context = newNameForContext
+        POST(data: Activities)
+    case 2:
+        var indexContext = Int()
+        var indexTask = Int()
+        for i in 0..<Activities.count {
+            if Activities[i].context == context {
+                indexContext = i
+                for j in 0..<Activities[i].tasks.count {
+                    print("==TAREFA (\(j+1))==")
+                    getTask(
+                        context: i,
+                        task: j
+                    )
+                }
+            }
+        }
+        
+    default:
+        print("error")
+    }
 }
 
 func POST(data: [Activity]) {
