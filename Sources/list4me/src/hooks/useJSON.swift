@@ -56,6 +56,7 @@ func useJSON() -> [Activity] {
         startJSON(json: activities)
     } else {
         createDataDirectory()
+        useWellcome()
         let firstActivity = listenActivity()
         let arr = [firstActivity]
         let jsonData = try! JSONEncoder().encode(arr)

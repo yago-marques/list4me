@@ -113,11 +113,60 @@ func putTask() {
                         task: j
                     )
                 }
+                repeat {
+                    indexTask = getInt("Escolha a tarefa: ")
+                } while indexTask > Activities[i].tasks.count || indexTask == 0
+                
+                indexTask -= 1
             }
         }
-        
+        let taskProperty = taskPropertyToUptade()
+        switch taskProperty {
+        case 1:
+            let newTitle = getString("Digite o novo title: ")
+            Activities[indexContext].tasks[indexTask].title = newTitle
+        case 2:
+            let newDeadline = getString("Digite a nova deadline: ")
+            Activities[indexContext].tasks[indexTask].deadline = newDeadline
+        case 3:
+            let newImportance = getInt("Novo nível de importância: [0...10]")
+            let newUrgency = getInt("Novo nível de urgência: [0...10]")
+            Activities[indexContext].tasks[indexTask].category = useCategory(
+                (
+                    importance: newImportance,
+                    urgency: newUrgency
+                )
+            )
+        default:
+            print("Error")
+        }
+        POST(data: Activities)
     default:
         print("error")
+    }
+}
+
+func getTasks() {
+    let context = chooseContextWithdrawCreateOption()
+    let option = chooseListOption()
+    switch option {
+    case 1:
+        GET(
+            context: context,
+            filter: "todoTasks"
+        )
+    case 2:
+        GET(
+            context: context,
+            filter: "doneTasks"
+        )
+    case 3:
+        GET(
+            context: context,
+            filter: "allTasks"
+        )
+    default:
+        print("Error")
     }
 }
 
@@ -128,6 +177,7 @@ func POST(data: [Activity]) {
     let newFilePath = directoryURL.appendingPathComponent("data.json")
     do {
         try activity.write(to: newFilePath)
+        print("[200] - Alterações feitas com sucesso")
         return
     } catch {
         return
@@ -146,6 +196,26 @@ func GET(
                     if !Activities[i].tasks[j].done {
                         getTask(context: i, task: j)
                     }
+                }
+            }
+        }
+    case "doneTasks" :
+        for i in 0..<Activities.count{
+            if Activities[i].context == context {
+                for j in 0..<Activities[i].tasks.count {
+                    if Activities[i].tasks[j].done {
+                        getTask(context: i, task: j)
+                    } else {
+                        print("Nenhuma tarefa concluida")
+                    }
+                }
+            }
+        }
+    case "allTasks" :
+        for i in 0..<Activities.count{
+            if Activities[i].context == context {
+                for j in 0..<Activities[i].tasks.count {
+                    getTask(context: i, task: j)
                 }
             }
         }

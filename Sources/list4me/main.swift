@@ -21,7 +21,14 @@ func main() {
         deleteContext()
     case 4:
         putTask()
-    default: print("error")
+    case 5:
+        getTasks()
+    case 6:
+        taskAsDone()
+    case 0:
+        return
+    default:
+        print("error")
     }
     
 }
