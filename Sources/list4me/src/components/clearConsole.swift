@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import Commands
 
-func clear(){
-    print("clear", terminator: Array(repeating: "\n", count: 50).joined())
+func clear() -> Void {
+    Commands.Bash.system("ls")
 }

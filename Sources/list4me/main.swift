@@ -11,25 +11,37 @@ import Foundation
 func main() {
     
     let _ = useJSON()
+    
+    var repeatAgain = true
+    
+    repeat {
     let option = useMenu()
     switch option {
-    case 1:
-        postTask()
-    case 2:
-        deleteTask()
-    case 3:
-        deleteContext()
-    case 4:
-        putTask()
-    case 5:
-        getTasks()
-    case 6:
-        taskAsDone()
-    case 0:
-        return
-    default:
-        print("error")
-    }
+        case 1:
+            postTask()
+            repeatAgain = getBool("Deseja voltar ao menu? [y/n]")
+        case 2:
+            deleteTask()
+            repeatAgain = getBool("Deseja voltar ao menu? [y/n]")
+        case 3:
+            deleteContext()
+            repeatAgain = getBool("Deseja voltar ao menu? [y/n]")
+        case 4:
+            putTask()
+            repeatAgain = getBool("Deseja voltar ao menu? [y/n]")
+        case 5:
+            getTasks()
+            repeatAgain = getBool("Deseja voltar ao menu? [y/n]")
+        case 6:
+            taskAsDone()
+            repeatAgain = getBool("Deseja voltar ao menu? [y/n]")
+        case 0:
+            repeatAgain = false
+            return
+        default:
+            print("error")
+        }
+    } while repeatAgain
     
 }
 

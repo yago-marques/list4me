@@ -44,7 +44,7 @@ func getBool(_ msg: String) -> Bool{
     switch possibleBool {
         case "y", "yes" : return true
         case "n", "not" : return false
-        default : return Bool()
+        default : return true
     }
 }
 
@@ -54,8 +54,4 @@ func getCurrentDate() -> String {
     dateFormatter.dateFormat = "dd.MM.yyyy"
     let result = dateFormatter.string(from: date)
     return result
-}
-
-func uuid() -> Int {
-    return Int.random(in: 100000...999999)
 }

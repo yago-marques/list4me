@@ -11,7 +11,6 @@ struct Task: Codable {
     var done: Bool
     var deadline: String
     var title: String
-    let id: Int
     var category: String
     let createdAt: String
 }
@@ -19,11 +18,6 @@ struct Task: Codable {
 struct Activity: Codable {
     var context: String
     var tasks: [Task]
-    
-    
-    init(){
-        
-    }
 }
 
 var Activities: [Activity] = []
@@ -58,7 +52,6 @@ func useActivity(
                 done: false,
                 deadline: deadline,
                 title: title,
-                id: uuid(),
                 category: useCategory((importance: evaluations.importance, urgency: evaluations.urgency)),
                 createdAt: getCurrentDate()
             )
@@ -92,12 +85,14 @@ func useActivityForJSON(
                 done: task.done,
                 deadline: task.deadline,
                 title: task.title,
-                id: task.id,
                 category: task.category,
                 createdAt: task.createdAt)
         )
     }
-    let newActivity = Activity(context: context, tasks: tasksToAppend)
+    let newActivity = Activity(
+        context: context,
+        tasks: tasksToAppend
+    )
     Activities.append(newActivity)
 }
 
@@ -110,7 +105,7 @@ func listenActivity() -> Activity {
     }
     
     let title = getString("Título atividade: ")
-    let deadline = getString("DeadLine: ")
+    let deadline = getString("Data limite: ")
     let importance = getInt("Importancia: [0...10]")
     let urgency = getInt("Urgência: [0...10]")
     useActivity(
@@ -134,8 +129,10 @@ func verifyIfIsTaskOrActivity() -> (Int, String) {
 
 func choosePropertyToUptade() -> Int{
     let propertyMenu = """
+    
     (1) - Contexto
     (2) - Tarefa
+    
     """
     
     print(propertyMenu)
@@ -149,14 +146,16 @@ func choosePropertyToUptade() -> Int{
 
 func choosePropertyToUpdateInTask() -> Int{
     let propertyMenu = """
-    (1) - Category
-    (2) - Title
-    (3) - Deadline
+    
+    (1) - Categoria(estrelas)
+    (2) - Título
+    (3) - Data limite
+    
     """
     print(propertyMenu)
     var option = 0
     repeat {
-        option = getInt("Digite a propriedade para ser alterada")
+        option = getInt("\nDigite a propriedade para ser alterada\n")
     } while option != 1 && option != 2 && option != 3
     return option
 }

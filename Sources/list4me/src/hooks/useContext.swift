@@ -46,7 +46,7 @@ func createContext() -> String {
 }
 
 func chooseContextWithdrawCreateOption() -> String{
-    print("Contextos existentes: ")
+    print("\nContextos existentes: ")
     var index = 1
     for activity in Activities {
         print("(\(index)) - \(activity.context) [\(activity.tasks.count) tarefas]")

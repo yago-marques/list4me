@@ -8,15 +8,14 @@
 import Foundation
 
 func listenTask() -> Task {
-    let title = getString("Título atividade: ")
-    let deadline = getString("DeadLine: ")
+    let title = getString("\nTítulo atividade: ")
+    let deadline = getString("Data limite: ")
     let importance = getInt("Nível de importância: [0...10]")
     let urgency = getInt("Nível de urgência: [0...10]")
     let newTask = Task(
         done: false,
         deadline: deadline,
         title: title,
-        id: uuid(),
         category: useCategory((importance: importance, urgency: urgency)),
         createdAt: getCurrentDate()
     )
@@ -44,7 +43,7 @@ func getTask(context: Int, task: Int){
         thisActivity.tasks[task].done,
     ]
 
-    print("==\(thisActivity.tasks[task].category)==ID-\(thisActivity.tasks[task].id)")
+    print("==\(thisActivity.tasks[task].category)==")
     for i in 0...2 {
         print("\(labels[i]): \(fields[i])")
     }
@@ -68,10 +67,12 @@ func chooseTaskConfig(context: String) -> (Int, [Int]){
 
 func taskPropertyToUptade() -> Int {
     let optionsList = """
+    
     ==Qual propriedade da tarefa deseja alterar?==
     (1) - Title
     (2) - Deadline
     (3) - Category
+    
     """
     var option = Int()
     print(optionsList)
@@ -83,9 +84,11 @@ func taskPropertyToUptade() -> Int {
 
 func chooseListOption() -> Int {
     let menu = """
+    
     (1) - Tarefas para fazer
     (2) - Tarefas feitas
     (3) - Todas as tarefas
+    
     """
     print(menu)
     var option = Int()
