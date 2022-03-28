@@ -19,6 +19,11 @@ struct Task: Codable {
 struct Activity: Codable {
     var context: String
     var tasks: [Task]
+    
+    
+    init(){
+        
+    }
 }
 
 var Activities: [Activity] = []
