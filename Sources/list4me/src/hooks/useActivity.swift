@@ -8,28 +8,39 @@
 import Foundation
 
 struct Task: Codable {
-    let done: Bool
-    let deadline: String
-    let title: String
+    var done: Bool
+    var deadline: String
+    var title: String
     let id: Int
-    let category: String
+    var category: String
     let createdAt: String
 }
 
 struct Activity: Codable {
     var context: String
     var tasks: [Task]
+    
+    
+    init(){
+        
+    }
 }
 
 var Activities: [Activity] = []
 
 func useCategory(_ evaluations: (importance: Int, urgency: Int)) -> String {
     switch evaluations {
-        case let (i, u) where i > 5 && u > 5:
+    case let (i, u) where i > 5 && u > 5:
         return "⭐⭐⭐⭐⭐"
-        case let (i, u) where i > 5 && u <= 5:
+    case let (i, u) where i > 5 && u <= 5:
         return "⭐⭐⭐⭐"
-        default:
+    case let (i, u) where i <= 5 && u > 5:
+        return "⭐⭐⭐⭐"
+    case let (i, u) where i == 5 && u == 5:
+        return "⭐⭐⭐"
+    case let (i, u) where i < 5 && u < 5:
+        return "⭐⭐"
+    default:
         return "Error"
     }
 }
@@ -100,8 +111,8 @@ func listenActivity() -> Activity {
     
     let title = getString("Título atividade: ")
     let deadline = getString("DeadLine: ")
-    let importance = getInt("Importancia: ")
-    let urgency = getInt("Urgência: ")
+    let importance = getInt("Importancia: [0...10]")
+    let urgency = getInt("Urgência: [0...10]")
     useActivity(
         context: context,
         title: title,

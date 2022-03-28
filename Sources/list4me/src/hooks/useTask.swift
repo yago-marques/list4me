@@ -10,8 +10,8 @@ import Foundation
 func listenTask() -> Task {
     let title = getString("Título atividade: ")
     let deadline = getString("DeadLine: ")
-    let importance = getInt("Importancia: ")
-    let urgency = getInt("Urgência: ")
+    let importance = getInt("Nível de importância: [0...10]")
+    let urgency = getInt("Nível de urgência: [0...10]")
     let newTask = Task(
         done: false,
         deadline: deadline,
@@ -64,4 +64,61 @@ func chooseTaskConfig(context: String) -> (Int, [Int]){
         }
     }
     return (contextIndex, tasksIndex)
+}
+
+func taskPropertyToUptade() -> Int {
+    let optionsList = """
+    ==Qual propriedade da tarefa deseja alterar?==
+    (1) - Title
+    (2) - Deadline
+    (3) - Category
+    """
+    var option = Int()
+    print(optionsList)
+    repeat {
+        option = getInt("Digite o número da propriedade")
+    } while option != 1 && option != 2 && option != 3
+    return option
+}
+
+func chooseListOption() -> Int {
+    let menu = """
+    (1) - Tarefas para fazer
+    (2) - Tarefas feitas
+    (3) - Todas as tarefas
+    """
+    print(menu)
+    var option = Int()
+    repeat {
+        option = getInt("Escolha uma opção: ")
+    } while option != 1 && option != 2 && option != 3
+    
+    return option
+}
+
+func taskAsDone() {
+    let context = chooseContextWithdrawCreateOption()
+    var indexContext = Int()
+    var indexTask = Int()
+    for i in 0..<Activities.count {
+        if Activities[i].context == context {
+            indexContext = i
+            for j in 0..<Activities[i].tasks.count {
+                if !Activities[i].tasks[j].done {
+                    print("==TAREFA (\(j+1))==")
+                    getTask(
+                        context: i,
+                        task: j
+                    )
+                }
+            }
+            repeat {
+                indexTask = getInt("Escolha a tarefa: ")
+            } while indexTask > Activities[i].tasks.count || indexTask == 0
+            
+            indexTask -= 1
+        }
+    }
+    Activities[indexContext].tasks[indexTask].done = true
+    POST(data: Activities)
 }

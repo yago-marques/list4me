@@ -23,7 +23,7 @@ func useMenu() -> Int {
     repeat {
         print(menuOptions)
         option = getInt("Acessar: ")
-    } while option != 0 && option != 1 && option != 2 && option != 3 && option != 4 && option != 5
+    } while option != 0 && option != 1 && option != 2 && option != 3 && option != 4 && option != 5 && option != 6
     
     return option
 }
